@@ -7,7 +7,7 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // Parse form data
 
-let c = mongoose.connect("mongodb://localhost:27017/icoder");
+let c = mongoose.connect("mongodb+srv://Abhipsa:<Abhipsa27>@cluster0.njdi2.mongodb.net/");
 const db = mongoose.connection;
 db.on('connected', () => {
     console.log("mongoose is connected");
