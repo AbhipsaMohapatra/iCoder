@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // Parse form data
  app.use(cors(
     {
-        "origin": ["https://i-coder-git-main-abhipsa-mohapatras-projects.vercel.app/"],
+        "origin": ["https://i-coder-fqye.vercel.app/"],
         "methods": ["POST","GET"],
         "credentials": true
     }
@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true })); // Parse form data
  ))
 
 
- let c = mongoose.connect("mongodb+srv://Abhipsa:Abhipsa27@cluster0.njdi2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
+ let c = mongoose.connect("mongodb+srv://Abhipsa:Abhipsa27@cluster0.njdi2.mongodb.net/icoder?retryWrites=true&w=majority&appName=Cluster0");
 const db = mongoose.connection;
 db.on('connected', () => {
     console.log("mongoose is connected");
