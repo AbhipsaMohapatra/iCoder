@@ -7,6 +7,17 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // Parse form data
 
+require('dotenv').config(); // Load environment variables
+
+// Check if dotenv loaded the environment variables
+if (process.env.AZURE_EMAIL) {
+    console.log("dotenv is working!");
+} else {
+    console.log("dotenv is not loading environment variables.");
+}
+console.log("AZURE_EMAIL:", process.env.AZURE_EMAIL);
+console.log("AZURE_TOPIC:", process.env.AZURE_TOPIC);
+
 let c = mongoose.connect("mongodb+srv://Abhipsa:<Abhipsa27>@cluster0.njdi2.mongodb.net/");
 const db = mongoose.connection;
 db.on('connected', () => {
