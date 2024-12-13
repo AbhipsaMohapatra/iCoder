@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // Parse form data
  app.use(cors(
     {
-        "origin": "*",
+        "origin": ["https://i-coder-git-main-abhipsa-mohapatras-projects.vercel.app/"],
         "methods": ["POST","GET"],
         "credentials": true
     }
