@@ -1,46 +1,31 @@
-require('dotenv').config();
+
 const express = require('express')
 const app = express()
 const port = 3000
 const mongoose = require('mongoose');
 const path = require('path');
+var cors = require('cors');
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // Parse form data
+ app.use(cors(
+    {
+        "origin": "*",
+        "methods": ["POST","GET"],
+        "credentials": true
+    }
 
- // Load environment variables
+ ))
 
-// Check if dotenv loaded the environment variables
-if (process.env.AZURE_EMAIL) {
-    console.log("dotenv is working!");
-} else {
-    console.log("dotenv is not loading environment variables.");
-}
-console.log("AZURE_EMAIL:", process.env.AZURE_EMAIL);
-console.log("AZURE_TOPIC:", process.env.AZURE_TOPIC);
 
-//  let c = mongoose.connect("mongodb+srv://Abhipsa:<db_Abhipsa27>@cluster0.njdi2.mongodb.net/icoder");
-// const db = mongoose.connection;
-// db.on('connected', () => {
-//     console.log("mongoose is connected");
-// })
-// db.on("error", (err) => {
-//     console.log("error occured");
-// })
-const mongoUri = process.env.MONGO_URI;
-
-if (!mongoUri) {
-  console.error("MongoDB URI is missing in environment variables");
-  process.exit(1);
-}
-
-mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    console.log("MongoDB connected successfully!");
-  })
-  .catch((error) => {
-    console.error("MongoDB connection error:", error);
-  });
+ let c = mongoose.connect("mongodb+srv://Abhipsa:Abhipsa27@cluster0.njdi2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
+const db = mongoose.connection;
+db.on('connected', () => {
+    console.log("mongoose is connected");
+})
+db.on("error", (err) => {
+    console.log("error occured");
+})
 
 const Usersschema = new mongoose.Schema({
     email: {
